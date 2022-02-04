@@ -1,0 +1,46 @@
+a=input().split()
+numb=input().split()
+n=[]
+n+=numb
+def Maxvig(a):
+    x=a[0]
+    for i in range(len(a)):   #находим число которое будем изменять
+        if len(x)<len(a[i]):
+            b=len(a[i])-len(x)
+            if a[i][0:b]=="9"*b and a[i][b:len(a[i])]<x:
+                x=a[i]
+            else:
+                x=a[i]
+        elif len(x)==len(a[i]) and x>a[i]:
+            x=a[i]
+        elif len(x)>len(a[i]):
+            c=len(x)-len(a[i])
+            if x[0:c]=='9'*c and x[c:len(x)]>a[i]:
+                x=a[i]
+
+    c=""
+    e=0
+    while(e!=-1):  # находим тот индекс который будем менять
+        if x[e]!="9":
+            o=e
+            e=-1
+        else:
+            e+=1
+
+
+
+    for e in range(len(x)): #меняем этот индекс на 9
+        if e==o:
+            c+="9"
+        else:
+            c+=x[e]
+    a.remove(x)
+    a.append(c)
+    return a
+
+sum=0
+for i in range(int(a[1])):
+    numb=Maxvig(numb)
+for i in range(len(numb)):
+    sum=sum+(int(numb[i])-int(n[i]))
+print(sum)
